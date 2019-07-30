@@ -137,7 +137,7 @@ PyDoc_STRVAR (
 	"Parameters\n"
 	"----------\n"
 	"buffer : 132 bytes\n"
-	"pointcloud : ndarray((3, n), np.float32)\n"
+	"pointcloud : ndarray((n, 3), np.float32)\n"
 	"intensities : ndarray((n), np.uint8)\n"
 	"start_idx : int\n"
 	"\n"
