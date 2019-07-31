@@ -37,13 +37,10 @@ class Quanergy_M8_Parser:
         self.number_of_pointclouds = 0
         self.pointcloud_callback = _nothing_function_
 
-    def get_cosine(self, val):
-        return aa[val]
 
     def parse(self, packet):
         signature, size, seconds, nanoseconds, version_major, version_minor, version_patch, \
             packet_type = struct.unpack('>IIIIBBBB', packet[:20])
-        #print(size, seconds, nanoseconds, packet_type)
         if packet_type == 0:
             self.parse_00(packet[20:])
         else:
@@ -59,7 +56,6 @@ class Quanergy_M8_Parser:
             self.parse_firing_data(payload[iStart:iStop])
         seconds, nanoseconds, api_version, status = struct.unpack('>LLHH', payload[iStop:])
         assert api_version == 5
-        #print(seconds, nanoseconds, api_version, status)
 
 
     def parse_firing_data(self, f_data):

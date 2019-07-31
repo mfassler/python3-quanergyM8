@@ -93,15 +93,8 @@ PyObject* parse_firing_data(PyObject *self, PyObject *args) {
 		return NULL;
 	}
 
-	//printf("buffer: %s\n", buffer);
-	//printf("buffer_len is: %d\n", buffer_len);
-	//printf("start_idx is: %d\n", start_idx);
-
 	float *pcPtr = (float *)PyArray_DATA(pointcloud);
 	uint8_t *intenPtr = (uint8_t *)PyArray_DATA(intensities);
-
-	//printf("  a value: %d\n", intenPtr[4]);
-	//printf("in pointcloud: %f\n", pcPtr[4*3 +1]);
 
 	struct M8FiringData *n_firing_data = (struct M8FiringData *) buffer;
 	uint16_t angle_10400 = ntohs(n_firing_data->position);
