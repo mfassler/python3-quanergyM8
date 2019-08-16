@@ -104,7 +104,8 @@ PyObject* parse_firing_data(PyObject *self, PyObject *args) {
 	int count = 0;
 	int offset = start_idx * 3;
 	int returnNum = 0;
-	for (int laserNum = 0; laserNum<M8_NUM_LASERS; laserNum++) {
+	//for (int laserNum = 0; laserNum<M8_NUM_LASERS; laserNum++) {
+		int laserNum = 6;
 		float vCos = M8_vert_cos[laserNum];
 		float vSin = M8_vert_sin[laserNum];
 
@@ -118,7 +119,7 @@ PyObject* parse_firing_data(PyObject *self, PyObject *args) {
 			offset += 3;
 			count++;
 		}
-	}
+	//}
 
 	return PyLong_FromLong(count);
 }
