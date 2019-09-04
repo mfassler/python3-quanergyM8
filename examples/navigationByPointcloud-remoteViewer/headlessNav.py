@@ -52,32 +52,6 @@ def find_transform(src, target):
 
 
 
-
-
-
-def ____OLD_DONT_USE_render_vis(xfrm):
-    heading = np.arctan2(xfrm[1,0], xfrm[1,1])
-    amap = np.copy(avoidance_areas)
-
-    startPos = np.dot(xfrm[:2, :2].T, xfrm[:2, 2])
-    x0 = int(round(startPos[1] * 100)) + 200
-    y0 = int(round(startPos[0] * 100)) + 200
-
-    xyStart = (x0, y0)
-    #print(xyStart)
-
-    x1 = int(round(x0 + 100*np.sin(heading)))
-    y1 = int(round(y0 - 100*np.cos(heading)))
-    xyStop = (x1, y1)
-
-    cv.arrowedLine(amap, xyStart, xyStop, (255,0,0), 2)
-    cv.imshow('a map', amap)
-    #cv.imwrite('images/2dnav-%05d.png' %(qparse.number_of_pointclouds), amap)
-    cv.waitKey(1)
-
-
-
-
 prev_position = 0
 def forward_pointcloud_data(qparse):
     global prev_position
@@ -87,8 +61,6 @@ def forward_pointcloud_data(qparse):
         udpPacket = struct.pack('I', qparse.number_of_pointclouds) + someData.tobytes()
         udpsock.sendto(udpPacket, (REMOTE_HOST, 11545))
     prev_position = qparse.cur_numpoints
-
-
 
 
 
@@ -104,7 +76,6 @@ def pointcloud_callback(self):
     udpsock.sendto(reXfrm.tobytes(), (REMOTE_HOST, 11546))
 
 qparse.pointcloud_callback = pointcloud_callback
-
 
 
 
