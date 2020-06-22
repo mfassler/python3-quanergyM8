@@ -128,7 +128,8 @@ def pointcloud_callback(self):
         vis.add_geometry(ref_pcd)
         viewControl.convert_from_pinhole_camera_parameters(param)
 
-    _nothing_ = vis.update_geometry()
+    _nothing_ = vis.update_geometry(pcd)
+    _nothing_ = vis.update_geometry(ref_pcd)
     _nothing_ = vis.poll_events()
     vis.update_renderer()
     #vis.capture_screen_image('images/pointcloud-%05d.png' %(qparse.number_of_pointclouds))
