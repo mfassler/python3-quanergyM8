@@ -43,7 +43,7 @@ def pointcloud_callback(self):
     if self.number_of_pointclouds == 3:
         vis.add_geometry(pcd)
 
-    _nothing_ = vis.update_geometry()
+    _nothing_ = vis.update_geometry(pcd)
     _nothing_ = vis.poll_events()
     vis.update_renderer()
 
