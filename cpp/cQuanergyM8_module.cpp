@@ -82,6 +82,14 @@ PyObject* parse_firing_data(PyObject *self, PyObject *args) {
 		return NULL;
 	}
 
+	uint32_t max_offset = start_idx * 3 + 132 * 3;
+	if (max_offset >= pcShape[0]) {
+		PyErr_Format(PyExc_IndexError,
+			"pointcloud array is too small: have %ld rows, but need at least %u rows",
+			pcShape[0], max_offset);
+		return NULL;
+	}
+
 	PyArray_Descr *dtype = PyArray_DTYPE(pointcloud);
 	if (dtype->type != 'f') {
 		PyErr_SetString(QuanergyM8_Error, "pointcloud must be: np.array((N, 3), np.float32)");

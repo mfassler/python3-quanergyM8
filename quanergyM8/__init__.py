@@ -28,11 +28,11 @@ def _nothing_function_(_self_):
 class Quanergy_M8_Parser:
     def __init__(self):
         self._prev_position = 0
-        self.prev_pointcloud = np.empty((5400*3*8, 3), np.float32)
-        self.prev_intensities = np.empty((5400*3*8), np.uint8)
+        self.prev_pointcloud = np.empty((6500*3*8, 3), np.float32)
+        self.prev_intensities = np.empty((6500*3*8), np.uint8)
         self.prev_numpoints = 0
-        self.cur_pointcloud = np.empty((5400*3*8, 3), np.float32)
-        self.cur_intensities = np.empty((5400*3*8), np.uint8)
+        self.cur_pointcloud = np.empty((6500*3*8, 3), np.float32)
+        self.cur_intensities = np.empty((6500*3*8), np.uint8)
         self.cur_numpoints = 0
         self.number_of_pointclouds = 0
         self.pointcloud_callback = _nothing_function_
@@ -66,8 +66,8 @@ class Quanergy_M8_Parser:
             self.prev_pointcloud = self.cur_pointcloud
             self.prev_intensities = self.cur_intensities
             self.prev_numpoints = self.cur_numpoints
-            self.cur_pointcloud = np.empty((5400*3*8, 3), np.float32)
-            self.cur_intensities = np.empty((5400*3*8), np.uint8)
+            self.cur_pointcloud = np.empty((6500*3*8, 3), np.float32)
+            self.cur_intensities = np.empty((6500*3*8), np.uint8)
             self.cur_numpoints = 0
             self.pointcloud_callback(self)
         self._prev_position = position
